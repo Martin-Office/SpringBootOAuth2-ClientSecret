@@ -1,0 +1,27 @@
+server:
+  port: 9009
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: "http://localhost:9009"
+        client:
+          uniqId:
+            registration:
+              client-id: "client"
+              client-secret: "{noop}secret+2"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+              redirect-uris:
+                - "https://oauthdebugger.com/debug"
+              scopes:
+                - "openid"
+            require-authorization-consent: false
+            require-proof-key: false
